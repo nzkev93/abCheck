@@ -692,13 +692,15 @@
 	*/
 	googleTagManager = {
 		key: {
+			EVENT_ACTIVE: 'adblockActive',
+			EVENT_INACTIVE: 'adblockInactive',
 			BLOCKER : 'AdBlocker',
 			FOUND : 'Found',
 			NOT_FOUND: 'NotFound',
 			DETECT: 'Detect'
 		},
 
-		recordEvent: function(found, triggerFound, attemptNum){
+		recordEvent: function(event, found, triggerFound, attemptNum){
 			if(!ENABLE_GOOGLE_TAG_MANAGER){
 				return;
 			}
@@ -715,12 +717,12 @@
 
 		blockerDetected: function(triggerFound, attemptNum){
 			var k = googleTagManager.key;
-			googleTagManager.recordEvent(k.FOUND, triggerFound, attemptNum);
+			googleTagManager.recordEvent(k.EVENT_ACTIVE, k.FOUND, triggerFound, attemptNum);
 		},
 
 		blockerNotDetected: function(triggerFound, attemptNum){
 			var k = googleTagManager.key;
-			googleTagManager.recordEvent(k.NOT_FOUND, triggerFound, attemptNum);
+			googleTagManager.recordEvent(k.EVENT_INACTIVE, k.NOT_FOUND, triggerFound, attemptNum);
 		}
 
 	};
