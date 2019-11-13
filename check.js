@@ -706,7 +706,7 @@
 			}
 
 			window[DATA_LAYER_NAME].push({
-				'event': 'adblockDetection',
+				'event': event,
 				'adblockValues': {
 					'found': found,
 					'triggerFound': triggerFound,
